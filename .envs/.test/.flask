@@ -1,0 +1,12 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+DAPP_STORE_BACKEND_ENV=dev
+
+# Redis
+# ------------------------------------------------------------------------------
+# REDIS_URL=redis://redis:6379/0
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+S3_BUCKET_NAME=dappest-test
+S3_BUCKET_PATH=https://s3-us-west-2.amazonaws.com/dappest-test

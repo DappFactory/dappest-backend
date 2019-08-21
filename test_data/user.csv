@@ -1,0 +1,6 @@
+id,address,username,email,profile_picture,blockchain_id,s3_id,created_at,nonce
+1,0x8A6b773A0ebDb6818f153e5ba9F0A9d11e13054F,TakeMeToTheMoonPlease,hello@gmail.com,,1,34600e8af9f1460b8a7fa9a86b7f6210,6/14/18,1234
+2,0x384910c147DdE9dA795F167b5046b010349B5a69,ThatCryptoGuy000,email@gmail.com,,1,57d4dc0cf85a4d1b83116953c17ef556,6/14/18,413541
+3,0x39eBDcF011D4ED511B4d6F77B0bd592c9635bed7,ThatOneAsshole,great@gmail.com,,1,67fc4e85dd9749da84314c86ab26c23b,6/14/18,21134
+4,0xadd85396ef46dc2c9a162649cec05d5bcc208a21,ThatOneGuyThatDoesntKnowShit,,,1,e705ecbc4a134c889a62118ee0cf574d,6/14/18,65534
+5,0x53bA6359A9388dbc1F71ABaFaacC3f1943711Cb6,CryptoRocket,,,1,53d2143f60394b7797809340513c63f6,6/14/18,89734

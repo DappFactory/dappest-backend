@@ -1,0 +1,10 @@
+.git
+.dockerignore
+!.coveragerc
+!.env
+!.pylintrc
+*__pycache__/
+
+# postgres volume containers for docker
+postgres_data/
+postgres_backup/

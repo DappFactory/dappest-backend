@@ -1,0 +1,94 @@
+version: '3.6'
+
+volumes:
+  # for persistant data storage within the container
+  postgres_data_local: {}
+  postgres_backup_local: {}
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/production/nginx/Dockerfile
+    image: dappest/nginx
+    depends_on:
+      - flask
+    ports:
+    - "80:80"
+    restart: always
+
+  # Build commands for main flask app
+  flask:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./compose/production/flask/Dockerfile
+    image: dappest/backend_api
+    depends_on:
+      - postgres
+      - rabbitmq
+    expose:
+      - "8000"
+    env_file:
+      - ./.envs/.production/.flask
+      - ./.envs/.production/.postgres
+    command: /start
+
+  # Build commands for flask service to fetch external data
+  celery_worker:
+    restart: always
+    build:
+      context: .
+      dockerfile: compose/local/worker/Dockerfile
+    image: dappest/backend_worker
+    depends_on:
+      - rabbitmq
+    env_file:
+      - ./.envs/.production/.flask
+      - ./.envs/.local/.postgres
+    command: /start_worker
+
+  # Build commands for flask service to fetch external data
+  celery_beat:
+    restart: always
+    build:
+      context: .
+      dockerfile: compose/local/worker/Dockerfile
+    image: dappest/backend_beat
+    depends_on:
+    - rabbitmq
+    - celery_worker
+    env_file:
+    - ./.envs/.production/.flask
+    - ./.envs/.production/.postgres
+    command: /start_beat
+
+  # Build commands for rabbitMQ message service
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: ./compose/local/rabbitmq/Dockerfile
+    image: dappest/backend_rabbitmq
+    hostname: "rabbitmq"
+    ports:
+      - "5672:5672"
+      - "15671:15671"
+      - "15672:15672"
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: dappest/backend_postgres-production
+    volumes:
+    - postgres_data_local:/var/lib/postgresql/data
+    - postgres_backup_local:/backups
+    ports:
+    - "5432:5432"
+    restart: always
+    env_file:
+    - ./.envs/.local/.postgres
+    networks:
+      default:
+        aliases:
+        - dapp_postgres

@@ -1,0 +1,55 @@
+pytz==2018.4  # https://github.com/stub42/pytz
+python-slugify==1.2.5  # https://github.com/un33k/python-slugify
+Pillow==5.1.0  # https://github.com/python-pillow/Pillow
+argon2-cffi==18.1.0  # https://github.com/hynek/argon2_cffi
+#redis>=2.10.5  # https://github.com/antirez/redis
+
+# Flask
+# ------------------------------------------------------------------------------
+Flask==1.0.2
+Flask-restplus==0.11.0
+MarkupSafe==0.23
+Werkzeug==0.14.1
+Jinja2==2.10
+itsdangerous==0.24
+flask-script==2.0.6
+
+# Database
+Flask-SQLAlchemy==2.3
+SQLAlchemy==0.9.8
+
+# Migrations
+Flask-Migrate==2.2.1
+
+# Auth
+Flask-Login==0.2.11
+pycryptodome==3.6.4
+flask-jwt-extended==3.12.1
+
+# Caching
+flask-caching==1.4.0
+
+# Forgotten Password
+Flask-Mail
+markdown
+
+# Serialization
+marshmallow==2.15.3
+marshmallow-sqlalchemy==0.14.0
+flask-marshmallow==0.9.0
+
+# Celery
+celery==4.2.1
+
+# AWS
+boto3==1.8.1
+awscli==1.16.1
+botocore==1.11.1
+
+# Web3
+web3==4.6.0
+
+# CORS
+Flask-Cors==3.0.3
+
+numpy==1.15.1

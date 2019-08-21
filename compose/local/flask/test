@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Short-cut commands to start up the flask server
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Initialize database
+rm -rf migrations
+python manage.py db init
+
+# Initialize and migrate database (always new migration in local)
+python manage.py db migrate
+python manage.py db upgrade
+
+# Run tests
+#python manage.py test
+python manage.py server --host 0.0.0.0 -p 8000
+
+#TODO: exit container

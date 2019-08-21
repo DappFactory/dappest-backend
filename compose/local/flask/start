@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Short-cut commands to start up the flask server
+set -o errexit
+set -o pipefail
+set -o nounset
+
+INIT_DATA=true
+
+# Initialize database if migrations folder does not exist
+if [ ! -d "migrations" ]; then
+    python manage.py db init
+fi
+
+# Initialize and migrate database (always new migration in local)
+python manage.py db upgrade
+python manage.py db migrate
+python manage.py db upgrade
+
+# Initialize data, only run on migrations initialization
+if [ "$INIT_DATA" = true ] ; then
+    python manage.py init_data
+fi
+
+# Run flask server
+python manage.py server --host 0.0.0.0 -p 8000

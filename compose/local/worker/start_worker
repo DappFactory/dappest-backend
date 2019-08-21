@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Short-cut commands to start up the flask server
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Run celery worker
+celery worker -A dapp_store_backend.celery_worker.celery -l info -Ofair --concurrency=4

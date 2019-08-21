@@ -1,0 +1,21 @@
+id,dapp_id,user_id,rating,title,review,feature,uploaded_at,data,verified
+1,1,1,5,Best Dapp Ever,This is such a great game!,{"cost": "2"},6/14/18,{},True
+2,1,2,4,Best Dapp Ever,This is the best game ever. I can't wait to tell all of my friends!,{"usability": "3"},6/14/18,{},True
+3,1,3,4,Best Dapp Ever,This game sucks ass. Give me my fucking money back.,{"usability": "3"},6/14/18,{},True
+4,1,4,4,Best Dapp Ever,I just made a million bucks from this game. Everyone try this game now!,{"usability": "1"},6/14/18,{},True
+5,1,5,3,Best Dapp Ever,Fucking worse game ever.,{"usability": "3"},6/14/18,{},True
+6,2,1,2,Best Dapp Ever,Best game ever!,{"usability": "3"},6/14/17,{},True
+7,2,2,1,Best Dapp Ever,Worst game ever.,{"usability": "3"},6/11/18,{},True
+8,2,3,1,Best Dapp Ever,Review text.,{"usability": "3"},4/14/18,{},True
+9,2,4,1,Best Dapp Ever,Review text 1.,{"usability": "3"},6/14/18,{},True
+10,2,5,1,Best Dapp Ever,Review text 2.,{"usability": "1"},6/14/18,{},True
+11,3,1,4,Best Dapp Ever,Review text 3.,{"usability": "2"},6/14/18,{},True
+12,3,2,5,Best Dapp Ever,Review text 4.,{"usability": "2"},6/14/18,{},True
+13,3,3,5,Best Dapp Ever,Review text 5.,{"usability": "3"},6/14/18,{},True
+14,3,4,5,Best Dapp Ever,Review text 6.,{"usability": "4"},6/14/18,{},True
+15,3,5,4,Best Dapp Ever,Review text 7.,{},6/14/17,{},True
+16,4,1,3,Best Dapp Ever,Review test 8.,{},6/11/18,{},True
+17,4,2,2,Best Dapp Ever,Review text 9.,{"usability": "3"},4/14/18,{},True
+18,4,3,1,Best Dapp Ever,Review text 10.,{"cost": "5"},6/14/18,{},True
+19,4,4,2,Best Dapp Ever,Review text 11.,{"cost": "5"},6/14/18,{},True
+20,4,5,5,Best Dapp Ever,Review text 12.,{"usability": "3"},6/14/18,{},True

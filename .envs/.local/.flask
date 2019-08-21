@@ -1,0 +1,21 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+DAPP_STORE_BACKEND_ENV=dev
+JWT_TOKEN_SECRET=
+CORS_ORIGIN=http://localhost:3000
+
+# Redis
+# ------------------------------------------------------------------------------
+# REDIS_URL=redis://redis:6379/0
+
+# AWS
+# ------------------------------------------------------------------------------
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+S3_BUCKET_NAME=dappest-logos
+S3_BUCKET_PATH=https://s3-us-west-2.amazonaws.com/dappest-logos
+
+# CELERY
+# ------------------------------------------------------------------------------
+CELERY_BROKER_HOSTNAME=user1:test12@rabbitmq

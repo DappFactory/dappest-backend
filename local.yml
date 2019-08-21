@@ -1,0 +1,87 @@
+version: '3.6'
+
+volumes:
+  # for persistant data storage within the container
+  postgres_data_local: {}
+  postgres_backup_local: {}
+
+services:
+  # Build commands for main flask app
+  flask:
+    build:
+      context: .
+      dockerfile: ./compose/local/flask/Dockerfile
+    image: dappest/backend_api_local
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    restart: always
+    env_file:
+      - ./.envs/.local/.flask
+      - ./.envs/.local/.postgres
+    # for running a shell command to start the server with public port opened up
+    command: /start
+
+  # Build commands for postgres db
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: dappest/backend_postgres-local
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
+      - postgres_backup_local:/backups
+    ports:
+      - "5432:5432"
+    restart: always
+    env_file:
+      - ./.envs/.local/.postgres
+    networks:
+      default:
+        aliases:
+          - dapp_postgres
+
+  # Build commands for flask service to fetch external data
+  celery_worker:
+    build:
+      context: .
+      dockerfile: compose/local/worker/Dockerfile
+    image: dappest/backend_worker_local
+    depends_on:
+      - rabbitmq
+    restart: always
+    env_file:
+      - ./.envs/.local/.flask
+      - ./.envs/.local/.postgres
+    command: /start_worker
+
+  # Build commands for flask service to fetch external data
+  celery_beat:
+    build:
+      context: .
+      dockerfile: compose/local/worker/Dockerfile
+    image: dappest/backend_beat_local
+    depends_on:
+    - rabbitmq
+    - celery_worker
+    restart: always
+    env_file:
+    - ./.envs/.local/.flask
+    - ./.envs/.local/.postgres
+    command: /start_beat
+
+  # Build commands for rabbitMQ message service
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: ./compose/local/rabbitmq/Dockerfile
+    image: dappest/backend_rabbitmq_local
+    hostname: "rabbitmq"
+    ports:
+      - "5672:5672"
+      - "15671:15671"
+      - "15672:15672"
