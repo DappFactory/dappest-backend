@@ -9,7 +9,7 @@ argon2-cffi==18.1.0  # https://github.com/hynek/argon2_cffi
 Flask==1.0.2
 Flask-restplus==0.11.0
 MarkupSafe==0.23
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 Jinja2==2.10
 itsdangerous==0.24
 flask-script==2.0.6
