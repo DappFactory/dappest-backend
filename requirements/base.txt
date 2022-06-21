@@ -52,4 +52,4 @@ web3==4.6.0
 # CORS
 Flask-Cors==3.0.3
 
-numpy==1.15.1
+numpy==1.22.0
